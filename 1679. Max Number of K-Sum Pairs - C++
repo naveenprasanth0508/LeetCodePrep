@@ -1,1 +1,17 @@
-
+class Solution {
+public:
+    int maxOperations(vector<int>& nums, int k) {
+        unordered_map<int, int> pooj;
+        int count = 0;
+        for(int num:nums) {
+            int target = k - num; 
+            if(pooj[target] > 0) {
+                count++;
+                pooj[target]--;
+            } else {
+                pooj[num]++;
+            }
+        }
+        return count;
+    }
+};
