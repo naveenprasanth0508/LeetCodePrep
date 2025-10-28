@@ -1,17 +1,9 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        node->val = node->next->val;        // Copy next node’s value
-        node->next = node->next->next;      // Bypass next node
+        node->val = node->next->val;        
+        node->next = node->next->next;      
     }
 };
 
-------------------------------------------------------------------------
 
-class Solution {
-public:
-    void deleteNode(ListNode* node) {
-    previous->next = node->next;
-    delete node;
-    }
-};
