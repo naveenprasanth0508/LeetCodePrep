@@ -9,3 +9,29 @@ public:
         return findTarget(root->left, k) || findTarget(root->right, k);
     }
 };
+
+------------------------------------------------------------------------
+
+class Solution {
+
+    public boolean findTarget(TreeNode root, int k) {
+        return findTargetHelper(root, root, k);
+    }
+
+    private boolean findTargetHelper(TreeNode root, TreeNode node, int k) {
+        if (node == null) return false;
+        TreeNode counterpart = search(root, node, k - node.val);
+        if (counterpart != null) return true;
+        return findTargetHelper(root, node.left, k) || findTargetHelper(root, node.right, k);
+    }
+    private TreeNode search(TreeNode root, TreeNode current, int target) {
+        if (root == null) return null;
+        if (root.val == target && root != current) {
+            return root;
+        } else if (target < root.val) {
+            return search(root.left, current, target);
+        } else {
+            return search(root.right, current, target);
+        }
+    }
+}
